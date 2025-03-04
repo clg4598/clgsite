@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            max-width: 350px; /* Limit max width */
+            height: auto; /* Allow auto height based on aspect ratio */
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            object-fit: cover; /* Ensures the image is properly cropped to fit */
+            flex: 1 1 300px; /* Flexible sizing of images */
+            cursor: pointer; /* Make the images clickable */
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: grey;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+            overflow: auto; /* Enable scroll if needed */
+        }
+
+        .modal-content {
+            margin: 15% auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain; /* Ensure image is scaled correctly */
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ddd;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .gallery-container {
+                padding: 10px;
+            }
+            .gallery-container img {
+                max-width: 300px; /* Slightly smaller images on medium screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-container img {
+                max-width: 100%; /* Make images full width on small screens */
+            }
+        }
+
+        /* Exhibition Section Styling */
+        .exhibitions-section {
+            margin-top: 50px;
+            padding: 40px;
+            background-color: #424242; /* Deep blue background */
+            border-radius: 10px;
+            color: rgb(221, 220, 213);
+        }
+
+        .exhibitions-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .exhibitions-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .exhibitions-list li {
+            font-size: 20px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .exhibitions-list li::before {
+            
+            color: rgb(223, 221, 211);
+        }
+
+        .exhibitions-list li a {
+            color: rgb(240, 238, 228);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .exhibitions-list li a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gallery</h1>
+    <p>Click on any image to view it in full size.</p>
+
+    <div class="gallery-container">
+        <a href="javascript:void(0);" onclick="openModal('images/sjpwcase1mod.jpg')">
+            <img src="images/sjpwcase1mod.jpg" alt="Atomic Gods Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/eve.jpg')">
+            <img src="images/eve.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/trapped.jpg')">
+            <img src="images/trapped.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/whores.jpg')">
+            <img src="images/whores.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/voz.jpg')">
+            <img src="images/voz.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/twins_in_gold_by_grymthepainter_d8jbgzu-fullview.jpg')">
+            <img src="images/twins_in_gold_by_grymthepainter_d8jbgzu-fullview.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/the_rape_of_eve_by_grymthepainter_d8jbg8u-fullview.jpg')">
+            <img src="images/the_rape_of_eve_by_grymthepainter_d8jbg8u-fullview.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/the_drunken_brides_by_grymthepainter_d8jbgje-fullview.jpg')">
+            <img src="images/the_drunken_brides_by_grymthepainter_d8jbgje-fullview.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/snail.jpg')">
+            <img src="images/snail.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/schism_of_death_by_grymthepainter_d8jbhn8-fullview.jpg')">
+            <img src="images/schism_of_death_by_grymthepainter_d8jbhn8-fullview.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/platos_vision_by_grymthepainter_d8jbfp8-fullview.jpg')">
+            <img src="images/platos_vision_by_grymthepainter_d8jbfp8-fullview.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/nomi.jpg')">
+            <img src="images/nomi.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/mankind.jpg')">
+            <img src="images/mankind.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/head.jpg')">
+            <img src="images/head.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/adorable_abomination_by_grymthepainter_d8jbgsp-fullview.jpg')">
+            <img src="images/adorable_abomination_by_grymthepainter_d8jbgsp-fullview.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/461084488_8779469132087433_5528023168214202580_n.jpg')">
+            <img src="images/461084488_8779469132087433_5528023168214202580_n.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/460530714_8722636377770709_5382372969567946918_n.jpg')">
+            <img src="images/460530714_8722636377770709_5382372969567946918_n.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/460332564_8722636381104042_5834931417196960363_n.jpg')">
+            <img src="images/460332564_8722636381104042_5834931417196960363_n.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/459054280_8648017635232584_5769553483261291961_n.jpg')">
+            <img src="images/459054280_8648017635232584_5769553483261291961_n.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/458179071_8620747687959579_613522513807244175_n.jpg')">
+            <img src="images/458179071_8620747687959579_613522513807244175_n.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/275862055_776048896708852_5144125763604974411_n.jpg')">
+            <img src="images/275862055_776048896708852_5144125763604974411_n.jpg" alt="Another Painting">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/275782922_3251168875116121_8284823987033037497_n.jpg')">
+            <img src="images/275782922_3251168875116121_8284823987033037497_n.jpg" alt="Another Painting">
+        </a>
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/250970195_4846862922014760_3187187034730351934_n.jpg')">
+        <img src="images/250970195_4846862922014760_3187187034730351934_n.jpg" alt="Another Painting">
+    </a>
+    
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/147229574_998217110705046_1507174159435566862_n.jpg')">
+        <img src="images/147229574_998217110705046_1507174159435566862_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/146741943_998216974038393_7098604140413116816_n.jpg')">
+        <img src="images/146741943_998216974038393_7098604140413116816_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/147287056_998217137371710_1857207195626289600_n.jpg')">
+        <img src="images/147287056_998217137371710_1857207195626289600_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/145837185_998217030705054_1198234954592859402_n.jpg')">
+        <img src="images/145837185_998217030705054_1198234954592859402_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/106348415_3398906943477039_8285774938374413330_n.jpg')">
+        <img src="images/106348415_3398906943477039_8285774938374413330_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/20604698_1651382304896187_1430402394296176754_n.jpg')">
+        <img src="images/20604698_1651382304896187_1430402394296176754_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/20545647_1651382338229517_2992015157922636373_o.jpg')">
+        <img src="images/20545647_1651382338229517_2992015157922636373_o.jpg" alt="Another Painting">
+    </a>
+      
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/14322270_1291941267506961_783337739572512717_n.jpg')">
+        <img src="images/14322270_1291941267506961_783337739572512717_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/13095988_1183650025002753_7099112340788270369_n.jpg')">
+        <img src="images/13095988_1183650025002753_7099112340788270369_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/12961485_1170851786282577_1023977297212061269_n.jpg')">
+        <img src="images/12961485_1170851786282577_1023977297212061269_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/12525666_1107817272586029_7313119481132115394_o.jpg')">
+        <img src="images/12525666_1107817272586029_7313119481132115394_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/12466113_1109302452437511_2032708621684062323_o.jpg')">
+        <img src="images/12466113_1109302452437511_2032708621684062323_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/11021537_962096343824790_4033062980862618109_o.jpg')">
+        <img src="images/11021537_962096343824790_4033062980862618109_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/10928970_924519777582447_6904223778486050689_o.jpg')">
+        <img src="images/10928970_924519777582447_6904223778486050689_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/10915095_919090781458680_1528559034528831455_o.jpg')">
+        <img src="images/10915095_919090781458680_1528559034528831455_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/10911448_919090831458675_148919504242886576_o.jpg')">
+        <img src="images/10911448_919090831458675_148919504242886576_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/10603426_832367230131036_2570364416232324915_n.jpg')">
+        <img src="images/10603426_832367230131036_2570364416232324915_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/10343682_784508698250223_5984731309405451145_n.jpg')">
+        <img src="images/10343682_784508698250223_5984731309405451145_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/10003512_751451344889292_741727918_n.jpg')">
+        <img src="images/10003512_751451344889292_741727918_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1794792_732374846796942_1943458800_n.jpg')">
+        <img src="images/1794792_732374846796942_1943458800_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1620894_733563970011363_294036795_n.jpg')">
+        <img src="images/1620894_733563970011363_294036795_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1614339_918578144843277_3191684672253275921_o.jpg')">
+        <img src="images/1614339_918578144843277_3191684672253275921_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1534334_700937723273988_1101100273_n.jpg')">
+        <img src="images/1534334_700937723273988_1101100273_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1501823_695450397156054_1462158902_n.jpg')">
+        <img src="images/1501823_695450397156054_1462158902_n.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1146251_634578843243210_1907838729_o.jpg')">
+        <img src="images/1146251_634578843243210_1907838729_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/1052145_609934612374300_588088911_o.jpg')">
+        <img src="images/1052145_609934612374300_588088911_o.jpg" alt="Another Painting">
+    </a>
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/424165_104564423003439_2142310576_n.jpg')">
+        <img src="images/424165_104564423003439_2142310576_n.jpg" alt="Another Painting">
+    </a>
+    
+    
+    </a>
+    <a href="javascript:void(0);" onclick="openModal('images/375236_305144806186617_1568225050_n.jpg')">
+        <img src="images/375236_305144806186617_1568225050_n.jpg" alt="Another Painting">
+    </a>
+    </div>
+
+    <!-- Exhibitions Section -->
+    <div class="exhibitions-section">
+        <h2>Exhibitions</h2>
+        <ul class="exhibitions-list">
+            <li><a href="#">Gallery Issa, Norway, 2010</a></li>
+            <li><a href="#">Gallery Raze ,Arizona 2012</a></li>
+            <li><a href="#">Gallery Kline, Chicago 2014</a></li>
+            <li><a href="#">Gallery ICC, Mississippi 2014</a></li>
+            <li><a href="#">Twisted Tree Gallery, Mississippi 2018</a></li>
+            <li><a href="#">Fury Gallery, Texas 2020</a></li>
+            <li><a href="#">Arter Limits, 2022</a></li>
+        </ul>
+    </div>
+
+    <a href="javascript:void(0);" class="back-button" onclick="window.history.back()">Back</a>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            var modal = document.getElementById("modal");
+            var modalImage = document.getElementById("modal-image");
+            modal.style.display = "block";
+            modalImage.src = imageSrc;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chadwick Grimes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1, h2, h3, h4, h5, h6 {font-family: "Montserrat", sans-serif;}
+
+
+
+.w3-row-padding img {margin-bottom: 0px;}
+
+
+
+.sidebar {
+           
+ 
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 200px;
+            background: #111;
+        }
+
+        
+
+        /* Top navigation for smaller screens */
+        .topnav {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #111;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .topnav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        .topnav a:hover {
+            background: #333;
+        }
+
+        /* Adds margin so content doesn't overlap the menu */
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                display: none; /* Hide sidebar on small screens */
+                background: #111;
+            }
+            .topnav {
+                display: block; /* Show top nav on small screens */
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 50px; /* Add space below top nav */
+                background: #111;
+            }
+        }
+
+
+.w3-black {
+
+  background-color: #111;
+}
+
+.menu-button {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  background: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Small screen menu button */
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+  background: #222;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ensures responsive layout */
+    gap: 10px; /* Adds spacing between images */
+    align-items: start;
+  }
+
+  .gallery-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .glow-on-hover {
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 30px 15px rgba(0, 255, 255, 0.8); /* Glow effect */
+  cursor: pointer; /* Indicate clickable element */
+}
+
+.glowing-link {
+  text-decoration: none;  /* Removes underline from the link */
+  color: inherit;         /* Inherit text color */
+  transition: all 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.glowing-link:hover {
+  text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue, 0 0 20px blue, 0 0 25px blue; /* Bluish glow effect */
+  color: #00f; /* Optional, changes text color to blue */
+}
+
+
+.website-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .right-image {
+    width: 180px;
+    border-radius: 10px;
+  }
+
+
+  .totheright {
+    width: 350px;
+    border-radius: 10px;
+
+  }
+
+
+</style>
+</head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-black">
+  <!-- Avatar image in top left corner -->
+  <img src="images/chadwickgrimeswebsiteprofilepic.png" style="width:100%">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#Web Design Projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>Web Design Projects</p>
+  </a>
+  <a href="#3D Art" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>3D Art</p>
+  </a>
+  <a href="#Oil Paintings" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>Oil Paintings</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<nav class="topnav">
+  <a href="#">HOME</a>
+  <a href="#about">ABOUT</a>
+  <a href="#Web Design Projects">Web Design Projects</a>
+  <a href="#3D Art">3D Art</a>
+  <a href="#Oil Paintings">3D Art</a>
+  <a href="#contact">CONTACT</a>
+</nav>
+
+
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main-content">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Chadwick Grimes.</h1>
+    <p>Artist and Web Designer.</p>
+    <img src="images/chadwickgrimeswebsiteprofilepic.png" alt="boy" class="w3-image" width="420" height="520">
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">Bio</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>  <p>
+      Hi, I’m <strong>Chadwick Grimes</strong>, a passionate <strong>web designer</strong> and skilled 
+      <strong>3D artist</strong> and <strong>Illustrator</strong> with a knack for turning creative visions into functional, stunning digital 
+      experiences. With a strong foundation in <strong>front-end development</strong>, as well as <strong>back-end development</strong>, I specialize in building 
+      modern, responsive websites that are as visually striking as they are user-friendly.
+    </p>
+    <p>
+      My unique approach combines technical expertise with my artistic background in 
+      <strong>illustration</strong> and <strong>3D design</strong>, allowing me to craft websites that stand out 
+      both in performance and aesthetics. Whether it’s custom UI/UX elements, seamless animations, or immersive 
+      visuals, I infuse my artistic creativity into every project to ensure a polished and memorable experience 
+      for users.
+    </p>
+    <h2>What I Bring to the Table</h2>
+    <ul>
+      <li><strong>Web Development</strong>: Responsive, interactive websites using the latest tools and frameworks.</li>
+      <li><strong>Custom Design</strong>: Eye-catching layouts tailored to your brand and audience.</li>
+      <li><strong>3D Integration</strong>: Stunning 3D visuals and animations that add depth and interactivity to your site.</li>
+      <li><strong>Illustration Expertise</strong>: Hand-crafted graphics and illustrations that elevate your site’s visual appeal.</li>
+    </ul>
+    <p>
+      I love collaborating with clients to bring their ideas to life, whether it’s a sleek portfolio, an engaging 
+      e-commerce platform, or a dynamic web app. My mission is to create websites that not only look incredible 
+      but also drive results.
+    </p>
+    <p>Let’s make something amazing together!</p>
+   
+    </p>
+    <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+    <p class="w3-wide">3D</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div>
+    <p class="w3-wide">Web Design</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div>
+    <p class="w3-wide">Illustration/Oil Painting</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Bootstrap</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Javascript</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">HTML</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">React</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Node.js</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">CSS</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Angular</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Vue.js</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Svelte</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Tailwind CSS</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">GIT/ GIThub</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Python</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Ruby</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">PHP</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">GO</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">C#</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">Java</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">SQL</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">APIS</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">MongoDB</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+    <p class="w3-wide">MySQL</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:100%"></div>
+    </div><br>
+
+
+
+    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">14+</span><br>
+        Partners
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">32+</span><br>
+        Projects Done
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">68+</span><br>
+        Happy Clients
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">120+</span><br>
+        Meetings
+      </div>
+    </div>
+
+    <a href="https://github.com/clg4598/resume-website/blob/5e6d9e36ff385d386d9299dd7ab4ffffd51dfa5a/resumewebsite/Chadwick_Grimes_Resume_Corrected_Final.pdf" download>
+    <button class="w3-button w3-light-grey w3-padding-large w3-section">
+      <i class="fa fa-download"></i> Download Resume
+    </button>
+  </a>
+    <!-- Grid for pricing tables -->
+    <div class="w3-padding-64 w3-content" id="Web Design Projects">
+    <h3 class="w3-padding-16 w3-text-light-grey">Web Design Products</h3>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Small Website</li>
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic Custom Website with 5 to 10 Pages </li>
+          <H3>Initial Website Creation</H3>
+          <h2>$ 3500</h2>
+          <li class="w3-padding-16">Full Custom Web Design</li>
+          <li class="w3-padding-16">SEO & Marketing Optimization</li>
+          <li class="w3-padding-16">Monthly Maintenance</li>
+          <li class="w3-padding-16">Endless Support</li>
+          <li class="w3-padding-16">25GB Storage</li>
+          <li class="w3-padding-16">
+            <h2>$ 300</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <a href="mailto:theman456984@gmail.com?subject=Sign Up Inquiry&body=I would like to sign up for a custom model.">
+              <button class="w3-button w3-white w3-padding-large w3-hover-black">Lets create your dream website!</button>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Medium to Large Website</li>
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">E-Commerce Store/Blog/Membership Site</li>
+          <H3>Initial Website Creation</H3>
+          <h2>$ 6000</h2>
+          <li class="w3-padding-16">Full Custom Web Design</li>
+          <li class="w3-padding-16">SEO & Marketing Optimization</li>
+          <li class="w3-padding-16">Monthly Maintenance</li>
+          <li class="w3-padding-16">Endless Support</li>
+          <li class="w3-padding-16">50GB Storage</li>
+          <li class="w3-padding-16">
+            <h2>$ 600</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <a href="mailto:theman456984@gmail.com?subject=Sign Up Inquiry&body=I would like to sign up for a custom model.">
+              <button class="w3-button w3-white w3-padding-large w3-hover-black">Lets create your dream website!</button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <!-- End Grid/Pricing tables -->
+    </div>
+    
+
+
+
+
+    <!-- Testimonials -->
+     
+    <h3 class="w3-padding-24 w3-text-light-grey">Websites</h3>
+    <div>  
+      
+      <div>  
+        <!-- Wrap the content in a clickable link -->
+        <a href="https://clg4598.github.io/Arter-Limits-/" target="_blank" class="glowing-link">
+          <img src="images/alexwest.jpg" alt="Arter Limits by Alex West" class="w3-left w3-circle w3-margin-right" style="width: 180px">
+          <p><span class="w3-large w3-margin-right">Alex West.</span> Arter Limits Founder/ Muralist.</p>
+          <p>It was important to have a website that showcased the fun and beauty of Arter Limits! We were thrilled with what Chadwick put together for us.</p><br>
+        </a>
+
+        <img src="images/Screenshot 2025-03-03 170601.png" alt="Art Consulting Website Preview" class="right-image">
+
+      </div>
+      
+  </div>
+  <br>
+  <br> 
+  <br> 
+  
+
+    <div>
+      <a href="https://clg4598.github.io/Art-Consulting-Agency/" target="_blank" class="glowing-link">
+    <img src="images/marcushuddleston.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:180px">
+    <p><span class="w3-large w3-margin-right">Roger Clements</span> Owner at Rogers & Sons Fine Arts.</p>
+    <p>Chadwick created what I needed to bring in clients, a simple yet effective website.</p><br>
+  </a>
+
+  <img src="images/rogers.png" alt="Art Consulting Website Preview" class="right-image">
+
+
+  </div>
+  <br>
+  <br>
+  <br>
+    
+  <a  class="glowing-link">
+    <img src="images/jamesfoster.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:180px">
+    <p><span class="w3-large w3-margin-right">James Foster.</span> CEO at Zenith Trust.</p>
+    <p>Chadwick went above and beyond to help get our first branch off the ground, weve since expanded and are looking to rebrand with his designs once again.</p>
+  </a>
+
+    <img src="images/Screenshot 2025-03-03 171731.png" alt="Art Consulting Website Preview" class="totheright">
+  <!-- End About Section -->
+  </div>
+  
+  <br>
+
+  <br>
+
+  
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="3D Art">
+    <h2 class="w3-text-light-grey">3D Art</h2>
+    <hr style="width:150px" class="w3-opacity">
+  
+    <!-- Grid for photos -->
+    <div class="gallery" style="display: flex; justify-content: flex-start;">
+      <a href="https://www.artstation.com/clgrym8498" target="_blank">
+        <img class="glow-on-hover" src="images/c-l-grym-rendering-frame-number2.jpg" style="max-width: 100%; height: auto; display: block;">
+      </a>
+    </div>
+    
+
+
+  <!-- Grid for pricing tables -->
+ 
+
+    <!-- Pricing Section (Stacked vertically) -->
+     
+    <!-- 3D Products/Models Section (Stacked vertically) -->
+<!-- 3D Products/Models Section -->
+<h3 class="w3-padding-16 w3-text-light-grey" style="text-align: center;">3D Products/Models</h3>
+
+<!-- Pricing Section for 3D Products -->
+<div class="w3-row-padding" style="margin: 0;">
+  <div class="w3-margin-bottom" style="width: 100%;">
+    <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+      <li class="w3-dark-grey w3-xlarge w3-padding-32">Mid to High Quality Creature Character</li>
+      <h3>Mid Quality Model</h3>
+      <h2>$800.00</h2>
+      <h3>High Quality Model</h3>
+      <h2>$2000.00</h2>
+      <li class="w3-padding-16">Up to 3 revisions</li>
+      <li class="w3-padding-16"> Optimization for Games / Film</li>
+      <li class="w3-padding-16">Mid to High Quality Textures (dependant on tier)</li>
+      <li class="w3-padding-16">100% Satusfaction Guaranteed</li>
+      
+      <li class="w3-light-grey w3-padding-24">
+        <a href="mailto:theman456984@gmail.com?subject=Sign Up Inquiry&body=I would like to sign up for a custom model.">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Get your custom 3D models now!</button>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<!-- Oil Paintings Section (Stacked vertically) -->
+<div class="w3-padding-64 w3-content" id="Oil Paintings">
+  <h2 class="w3-text-light-grey">Oil Paintings</h2>
+  <hr style="width:150px" class="w3-opacity">
+
+  <!-- Gallery for photos -->
+  <div class="gallery" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <a href="gallery.html">
+      <img class="glow-on-hover" src="images/clbanner.jpg" style="max-width: 100%; height: auto; display: block;">
+    </a>
+  </div>
+</div>
+  
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Contact Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Tupelo, MS</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 1-662-260-7081</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> 
+        <a href="mailto:theman456984@gmail.com" style="color: white;">Email: theman456984@gmail.com</a>
+      </p>
+    </div><br>
+    <p>Let's get in touch. Send me a message:</p>
+
+    <form action="mailto:theman456984@gmail.com" method="post" enctype="text/plain">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </p>
+    </form>
+  <!-- End Contact Section -->
+  </div>
+
+  
+  
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    
+    <a href="https://www.facebook.com/chadwick.grimes/" target="_blank"
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  </a>
+    
+    <a href="https://www.linkedin.com/in/chadwick-grimes-015600219" target="_blank"
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </a>
+  <!-- End footer -->
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+</html>
+
+
